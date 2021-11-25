@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Vue Mastery</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <div class="nav-bar"></div>
+</head>
 
-      <div class="cart">Cart({{ cart }})</div>
-      
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img v-bind:src="image">
-          </div>
-          <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p v-if="inStock">In Stock</p>
-            <p v-else>Out of Stock</p>
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
-            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
-            <button class="button">Add to Cart</button>
-          </div>
+<body>
+    <div id="app">
+        <div class="nav-bar"></div>
+
+        <div class="cart">Cart({{ cart }})</div>
+
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img v-bind:src="image">
+                </div>
+                <div class="product-info">
+                    <h1>{{ product }}</h1>
+                    <p v-if="inStock">In Stock</p>
+                    <p v-else>Out of Stock</p>
+                    <ul>
+                        <li v-for="detail in details">{{ detail }}</li>
+                    </ul>
+                    <div v-for="variant in variants" :key="variant.id">
+                        <p @mouseover="changeColorV2(variant.image)" :key="variant.color">
+                            {{ variant.color }}
+                        </p>
+
+                    </div>
+                    <button v-on:click="addToCart" class="button">Add to Cart</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- Import App -->
@@ -38,7 +45,8 @@
 
     <!-- Mount App -->
     <script>
-      const mountedApp = app.mount('#app')
+        const mountedApp = app.mount('#app')
     </script>
-  </body>
+</body>
+
 </html>
