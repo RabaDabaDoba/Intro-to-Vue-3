@@ -46,7 +46,7 @@ app.component('product-display', {
         <ul>
           <li v-for="(item, index) in cart" :key="item.id">
           <p>{{item.id + ', Q: ' + item.amount}}</p>
-          <button v-on:click="removeFromCart(index)">Remove</button>
+          <button class="button-38" v-on:click="removeFromCart(index)">Remove</button>
           </li>
         </ul>
       </div>
